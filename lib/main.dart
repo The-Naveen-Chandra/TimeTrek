@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:timetrek_app/home/home_screen.dart';
+import 'package:timetrek_app/theme/dark_theme.dart';
+import 'package:timetrek_app/theme/light_theme.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,10 +15,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'TimeTrek App',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      debugShowCheckedModeBanner: false,
+      theme: lightTheme,
+      darkTheme: darkTheme,
+      home: const HomeScreen(),
     );
   }
 }
