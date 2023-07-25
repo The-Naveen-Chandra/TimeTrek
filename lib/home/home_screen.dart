@@ -87,12 +87,12 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
 
                   // Real time Clock View
-                  const Flexible(
+                  Flexible(
                     flex: 4,
                     fit: FlexFit.tight,
                     child: Align(
                       alignment: Alignment.center,
-                      child: ClockView(),
+                      child: ClockView(size: 220),
                     ),
                   ),
 
@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             const Icon(
                               Icons.language,
                             ),
-                            // const SizedBox(width: 16),
+                            const SizedBox(width: 10),
                             Text(
                               "UTC$offSection + $timezoneString",
                               style: const TextStyle(
@@ -141,27 +141,30 @@ class _HomeScreenState extends State<HomeScreen> {
   Padding buildMenuButton(String title, String image) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 16),
-      child: TextButton(
-        onPressed: () {},
-        child: Column(
-          children: [
-            // assets
-            Image.asset(
-              image,
-              scale: 1.5,
-            ),
-
-            const SizedBox(height: 16),
-
-            // text
-            Text(
-              title,
-              style: const TextStyle(
-                fontFamily: 'avenir',
-                color: Colors.white,
+      child: Container(
+        // color: title == "Clock" ? Colors.red : Colors.transparent,
+        child: TextButton(
+          onPressed: () {},
+          child: Column(
+            children: [
+              // assets
+              Image.asset(
+                image,
+                scale: 1.5,
               ),
-            ),
-          ],
+
+              const SizedBox(height: 16),
+
+              // text
+              Text(
+                title,
+                style: const TextStyle(
+                  fontFamily: 'avenir',
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

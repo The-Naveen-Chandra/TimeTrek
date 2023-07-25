@@ -4,7 +4,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ClockView extends StatefulWidget {
-  const ClockView({super.key});
+  // dynamic size
+  final double size;
+
+  ClockView({super.key, required this.size});
 
   @override
   State<ClockView> createState() => _ClockViewState();
@@ -29,8 +32,8 @@ class _ClockViewState extends State<ClockView> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 300,
-      height: 300,
+      width: widget.size,
+      height: widget.size,
       child: Transform.rotate(
         angle: -pi / 2,
         child: CustomPaint(
@@ -68,7 +71,7 @@ class ClockPainter extends CustomPainter {
     var outlineBrush = Paint()
       ..color = const Color(0xffeaecff)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = 16;
+      ..strokeWidth = size.width / 20;
 
     // clock center fill brush
     var centerFillBrush = Paint()..color = const Color(0xffeaecff);
@@ -78,7 +81,7 @@ class ClockPainter extends CustomPainter {
       ..color = Colors.orange[300]!
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 8;
+      ..strokeWidth = size.width / 60;
 
     // clock minute hand
     var minuteHandBrush = Paint()
@@ -88,7 +91,7 @@ class ClockPainter extends CustomPainter {
       ..color = Colors.orange[300]!
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 16;
+      ..strokeWidth = size.width / 30;
 
     // clock hour hand
     var hourHandBrush = Paint()
@@ -98,7 +101,7 @@ class ClockPainter extends CustomPainter {
       ..color = Colors.orange[300]!
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
-      ..strokeWidth = 16;
+      ..strokeWidth = size.width / 24;
 
     var dashBrush = Paint()
       ..color = Colors.grey[200]!
@@ -106,28 +109,36 @@ class ClockPainter extends CustomPainter {
       ..strokeWidth = 1;
 
     // canvas
-    canvas.drawCircle(center, radius - 40, fillBrush);
-    canvas.drawCircle(center, radius - 40, outlineBrush);
+    canvas.drawCircle(center, radius * 0.75, fillBrush);
+    canvas.drawCircle(center, radius * 0.75, outlineBrush);
 
     // hour hand
     var hourHandX = centerX +
-        60 * cos((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
+        radius *
+            0.4 *
+            cos((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
     var hourHandY = centerX +
-        60 * sin((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
+        radius *
+            0.4 *
+            sin((dateTime.hour * 30 + dateTime.minute * 0.5) * pi / 180);
     canvas.drawLine(center, Offset(hourHandX, hourHandY), hourHandBrush);
 
     // minute hand
-    var minuteHandX = centerX + 80 * cos(dateTime.minute * 6 * pi / 180);
-    var minuteHandY = centerX + 80 * sin(dateTime.minute * 6 * pi / 180);
+    var minuteHandX =
+        centerX + radius * 0.6 * cos(dateTime.minute * 6 * pi / 180);
+    var minuteHandY =
+        centerX + radius * 0.6 * sin(dateTime.minute * 6 * pi / 180);
     canvas.drawLine(center, Offset(minuteHandX, minuteHandY), minuteHandBrush);
 
     // second hand
-    var secondHandX = centerX + 80 * cos(dateTime.second * 6 * pi / 180);
-    var secondHandY = centerX + 80 * sin(dateTime.second * 6 * pi / 180);
+    var secondHandX =
+        centerX + radius * 0.6 * cos(dateTime.second * 6 * pi / 180);
+    var secondHandY =
+        centerX + radius * 0.6 * sin(dateTime.second * 6 * pi / 180);
     canvas.drawLine(center, Offset(secondHandX, secondHandY), secondHandBrush);
 
     // center circle
-    canvas.drawCircle(center, 16, centerFillBrush);
+    canvas.drawCircle(center, radius * 0.12, centerFillBrush);
 
     // dashes around the circles
     var outerRadius = radius;
