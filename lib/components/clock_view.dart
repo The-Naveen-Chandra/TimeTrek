@@ -65,13 +65,14 @@ class ClockPainter extends CustomPainter {
     var radius = min(centerX, centerY);
 
     // clock background
-    var fillBrush = Paint()..color = const Color(0xff444974);
+    // const Color(0xff444974)
+    var fillBrush = Paint()..color = Colors.transparent;
 
     // clock outline
     var outlineBrush = Paint()
       ..color = const Color(0xffeaecff)
       ..style = PaintingStyle.stroke
-      ..strokeWidth = size.width / 20;
+      ..strokeWidth = size.width / 40;
 
     // clock center fill brush
     var centerFillBrush = Paint()..color = const Color(0xffeaecff);
@@ -95,10 +96,10 @@ class ClockPainter extends CustomPainter {
 
     // clock hour hand
     var hourHandBrush = Paint()
-      ..shader =
-          const RadialGradient(colors: [Color(0xffea74ab), Color(0xffc279fb)])
-              .createShader(Rect.fromCircle(center: center, radius: radius))
-      ..color = Colors.orange[300]!
+      // ..shader =
+      //     const RadialGradient(colors: [Color(0xffea74ab), Color(0xffc279fb)])
+      //         .createShader(Rect.fromCircle(center: center, radius: radius))
+      ..color = Colors.redAccent
       ..style = PaintingStyle.stroke
       ..strokeCap = StrokeCap.round
       ..strokeWidth = size.width / 24;
@@ -138,7 +139,7 @@ class ClockPainter extends CustomPainter {
     canvas.drawLine(center, Offset(secondHandX, secondHandY), secondHandBrush);
 
     // center circle
-    canvas.drawCircle(center, radius * 0.12, centerFillBrush);
+    canvas.drawCircle(center, radius * 0.10, centerFillBrush);
 
     // dashes around the circles
     var outerRadius = radius;
