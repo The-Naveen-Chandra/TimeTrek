@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:timetrek_app/components/enums.dart';
+import 'package:timetrek_app/model/enums.dart';
 
 class MenuInfo extends ChangeNotifier {
   MenuType menuType;
