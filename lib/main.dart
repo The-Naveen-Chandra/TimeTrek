@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:timetrek_app/model/enums.dart';
-import 'package:timetrek_app/home/home_screen.dart';
+import 'package:timetrek_app/screens/home_screen.dart';
 import 'package:timetrek_app/model/menu_info.dart';
 import 'package:timetrek_app/theme/dark_theme.dart';
 import 'package:timetrek_app/theme/light_theme.dart';

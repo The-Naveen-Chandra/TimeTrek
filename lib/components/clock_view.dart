@@ -7,7 +7,7 @@ class ClockView extends StatefulWidget {
   // dynamic size
   final double size;
 
-  ClockView({super.key, required this.size});
+  const ClockView({super.key, required this.size});
 
   @override
   State<ClockView> createState() => _ClockViewState();
