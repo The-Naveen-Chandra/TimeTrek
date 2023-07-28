@@ -1,3 +1,4 @@
+import 'package:timetrek_app/model/alarm_info.dart';
 import 'package:timetrek_app/model/enums.dart';
 import 'package:timetrek_app/model/menu_info.dart';
 
@@ -10,4 +11,15 @@ List<MenuInfo> menuItems = [
       title: "Timer", imageSource: "assets/images/hourglass.png"),
   MenuInfo(MenuType.stopwatch,
       title: "Stopwatch", imageSource: "assets/images/set-timer-button.png"),
+];
+
+List<AlarmInfo> alarms = [
+  AlarmInfo(
+    alarmDateTime: DateTime.now().add(Duration(hours: 1)),
+    description: "Office",
+  ),
+  AlarmInfo(
+    alarmDateTime: DateTime.now().add(Duration(hours: 1)),
+    description: "College",
+  )
 ];
