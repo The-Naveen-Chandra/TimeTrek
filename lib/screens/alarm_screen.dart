@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:timetrek_app/model/data.dart';
+import 'package:timetrek_app/service/notification_service.dart';
 
 class AlarmScreen extends StatefulWidget {
   const AlarmScreen({super.key});
@@ -72,18 +73,18 @@ class _AlarmScreenState extends State<AlarmScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Row(
+                            Row(
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.label,
                                   size: 24,
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   width: 8,
                                 ),
                                 Text(
-                                  "Office",
-                                  style: TextStyle(
+                                  alarm.description,
+                                  style: const TextStyle(
                                     fontFamily: "avenir",
                                     fontWeight: FontWeight.w600,
                                   ),
@@ -144,7 +145,14 @@ class _AlarmScreenState extends State<AlarmScreen> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(30),
           ),
-          onPressed: () {},
+          onPressed: () {
+            // NotificationService()
+            //     .showNotification(title: "TimeTrek", body: "Hello World");
+            var scheduleNotificationDateTime =
+                DateTime.now().add(Duration(seconds: 10));
+            NotificationService().scheduleNotification(
+                scheduleNotificationDateTime: scheduleNotificationDateTime);
+          },
           child: const Icon(
             CupertinoIcons.add,
             color: Colors.white,
