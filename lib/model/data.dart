@@ -16,10 +16,10 @@ List<MenuInfo> menuItems = [
 List<AlarmInfo> alarms = [
   AlarmInfo(
     alarmDateTime: DateTime.now().add(Duration(hours: 1)),
-    description: "Office",
+    title: "Office",
   ),
   AlarmInfo(
     alarmDateTime: DateTime.now().add(Duration(hours: 1)),
-    description: "College",
+    title: "College",
   )
 ];
